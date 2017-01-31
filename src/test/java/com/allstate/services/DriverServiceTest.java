@@ -1,6 +1,6 @@
 package com.allstate.services;
 
-import com.allstate.entities.City;
+import com.allstate.entities.Car;
 import com.allstate.entities.Driver;
 import com.allstate.enums.Gender;
 import org.junit.After;
@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.transaction.Transactional;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -35,7 +38,7 @@ public class DriverServiceTest {
         driver.setAge(25);
         driver.setGender(Gender.MALE);
         Driver driverAfter = this.service.create(driver);
-        assertEquals(2,driverAfter.getId());
+        assertEquals(3,driverAfter.getId());
     }
 
     @Test
@@ -46,7 +49,15 @@ public class DriverServiceTest {
 
     @Test
     public void shouldFindCityByName() throws Exception {
-        Driver driver=this.service.findByName("Rakesh");
-        assertEquals(1,driver.getId());
+        List<Driver> drivers=this.service.findByCity(1);
+        assertEquals(2,drivers.size());
     }
+
+    @Test
+    @Transactional
+    public void shouldFindCarOwnedByDriver() throws Exception {
+        List<Car> cars = this.service.findById(1).getCars();
+        assertEquals(2,cars.size());
+    }
+
 }

@@ -1,6 +1,8 @@
 package com.allstate.entities;
 
 import com.allstate.enums.Gender;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JacksonStdImpl;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -11,7 +13,6 @@ import java.util.Date;
 
 @Entity
 @Table(name = "passengers")
-@Data
 public class Passenger {
 
     private int id;

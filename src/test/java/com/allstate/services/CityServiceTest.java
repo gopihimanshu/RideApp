@@ -1,6 +1,7 @@
 package com.allstate.services;
 
 import com.allstate.entities.City;
+import com.allstate.entities.Driver;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -32,7 +35,6 @@ public class CityServiceTest {
         City city = new City();
         city.setName("Mysore");
         city.setState("Karnataka");
-        city.setDriverId(2);
         city.setRateDay(12.5);
         city.setRateNight(32.6);
         City cityAfter = this.service.create(city);
@@ -52,4 +54,5 @@ public class CityServiceTest {
         City city=this.service.findByName("Bangalore");
         assertEquals(1,city.getId());
     }
+
 }

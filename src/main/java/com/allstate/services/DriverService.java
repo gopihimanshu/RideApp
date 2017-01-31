@@ -5,6 +5,8 @@ import com.allstate.repositories.DriverRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DriverService {
     private DriverRepository driverRepository;
@@ -17,4 +19,6 @@ public class DriverService {
     public Driver findById(int id) { return this.driverRepository.findOne(id);}
 
     public Driver findByName(String name){ return this.driverRepository.findByName(name);}
+
+    public List<Driver> findByCity(int id){return this.driverRepository.findByCity(id);}
 }

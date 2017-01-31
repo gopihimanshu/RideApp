@@ -1,6 +1,7 @@
 package com.allstate.services;
 
 import com.allstate.entities.Car;
+import com.allstate.entities.Driver;
 import com.allstate.enums.CarType;
 import org.junit.After;
 import org.junit.Before;
@@ -45,5 +46,11 @@ public class CarServiceTest {
     public void shouldCarFindByName() throws Exception{
         Car car = this.service.findByName("Polo");
         assertEquals(1,car.getId());
+    }
+
+    @Test
+    public void shouldFindDriverForACar() throws Exception {
+        Driver driver = this.service.findById(1).getDriver();
+        assertEquals("Rakesh",driver.getName());
     }
 }

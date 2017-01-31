@@ -1,6 +1,5 @@
 package com.allstate.services;
 
-import com.allstate.entities.Driver;
 import com.allstate.entities.Passenger;
 import com.allstate.enums.Gender;
 import org.junit.After;
@@ -18,8 +17,10 @@ import static org.junit.Assert.*;
 @SpringBootTest
 @Sql(value = {"/sql/seed.sql"})
 public class PassengerServiceTest {
+
     @Autowired
     private PassengerService service;
+
     @Before
     public void setUp() throws Exception {}
 
@@ -47,5 +48,4 @@ public class PassengerServiceTest {
         Passenger passenger=this.service.findByName("Ram");
         assertEquals(1,passenger.getId());
     }
-
 }
