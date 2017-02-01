@@ -2,6 +2,7 @@ package com.allstate.services;
 
 import com.allstate.entities.City;
 import com.allstate.entities.Driver;
+import com.allstate.entities.Passenger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -55,4 +57,10 @@ public class CityServiceTest {
         assertEquals(1,city.getId());
     }
 
+    @Test
+    @Transactional
+    public void shouldReturnListOfPassenger() throws Exception {
+        List<Passenger> passengers = this.service.findById(1).getPassengers();
+        assertEquals(2,passengers.size());
+    }
 }

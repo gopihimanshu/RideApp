@@ -5,6 +5,8 @@ import com.allstate.repositories.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CarService {
     private CarRepository carRepository;
@@ -17,4 +19,8 @@ public class CarService {
     public Car findById(int id){return this.carRepository.findOne(id);}
 
     public Car findByName(String name){return this.carRepository.findByName(name);}
+
+//    public List<Car>findListOfCars(int id){
+//        return this.carRepository.findListOfCars(id);
+//    }
 }

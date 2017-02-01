@@ -10,9 +10,11 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "passengers")
+@Data
 public class Passenger {
 
     private int id;
@@ -23,6 +25,8 @@ public class Passenger {
     private double amount;
     private Date created;
     private Date modified;
+    private City city;
+    private List<Trip> trips;
 
     @Id
     @GeneratedValue
@@ -53,5 +57,15 @@ public class Passenger {
     @UpdateTimestamp
     public Date getModified() {return modified;}
     public void setModified(Date modified) {this.modified = modified;}
+
+    @ManyToOne
+    @JoinColumn(name="city_id")
+    public City getCity() {return city;}
+    public void setCity(City city) {this.city = city;}
+
+    @OneToMany(mappedBy = "passenger")
+    @JsonIgnore
+    public List<Trip> getTrips() {return trips;}
+    public void setTrips(List<Trip> trips) {this.trips = trips;}
 
 }
