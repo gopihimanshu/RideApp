@@ -2,6 +2,7 @@ package com.allstate.services;
 
 import com.allstate.entities.Car;
 import com.allstate.entities.Driver;
+import com.allstate.entities.Trip;
 import com.allstate.enums.Gender;
 import org.junit.After;
 import org.junit.Before;
@@ -59,5 +60,11 @@ public class DriverServiceTest {
         List<Car> cars = this.service.findById(1).getCars();
         assertEquals(2,cars.size());
     }
+//    @Test
+//    @Transactional
+//    public void shouldGetAllTheTripsRelatedToCar() throws Exception {
+//        List<Trip> trip = this.service.findById(1).getTrips();
+//        assertEquals(1,trip.size());
+//    }
 
 }

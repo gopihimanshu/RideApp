@@ -1,5 +1,6 @@
 package com.allstate.services;
 
+import com.allstate.entities.Driver;
 import com.allstate.entities.Passenger;
 import com.allstate.enums.Gender;
 import org.junit.After;
@@ -10,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.transaction.Transactional;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -34,7 +38,7 @@ public class PassengerServiceTest {
         passenger.setAge(25);
         passenger.setGender(Gender.MALE);
         Passenger passengerAfter = this.service.create(passenger);
-        assertEquals(2,passengerAfter.getId());
+        assertEquals(3,passengerAfter.getId());
     }
 
     @Test
@@ -47,5 +51,12 @@ public class PassengerServiceTest {
     public void shouldFindCityByName() throws Exception {
         Passenger passenger=this.service.findByName("Ram");
         assertEquals(1,passenger.getId());
+    }
+
+    @Test
+    @Transactional
+    public void shouldFindListOfDriver() throws Exception {
+        List<Driver> drivers = this.service.findListOfDrivers(2);
+        assertEquals(2,drivers.size());
     }
 }

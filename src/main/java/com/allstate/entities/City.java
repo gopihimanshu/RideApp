@@ -23,6 +23,7 @@ public class City {
     private int driverId;//Need to implement the relation
     private Date created;
     private Date modified;
+    private List<Passenger> passengers;
 
     @Id
     @GeneratedValue
@@ -57,4 +58,7 @@ public class City {
     public Date getModified() {return modified;}
     public void setModified(Date modified) {this.modified = modified;}
 
+    @OneToMany(mappedBy = "city")
+    public List<Passenger> getPassengers() {return passengers;}
+    public void setPassengers(List<Passenger> passengers) {this.passengers = passengers;}
 }

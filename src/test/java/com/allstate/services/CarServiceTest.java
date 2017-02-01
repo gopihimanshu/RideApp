@@ -2,6 +2,7 @@ package com.allstate.services;
 
 import com.allstate.entities.Car;
 import com.allstate.entities.Driver;
+import com.allstate.entities.Trip;
 import com.allstate.enums.CarType;
 import org.junit.After;
 import org.junit.Before;
@@ -12,12 +13,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.transaction.Transactional;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Sql(value = {"/sql/seed.sql"})
 public class CarServiceTest {
+
     @Autowired
     private CarService service;
 
@@ -53,4 +58,11 @@ public class CarServiceTest {
         Driver driver = this.service.findById(1).getDriver();
         assertEquals("Rakesh",driver.getName());
     }
+
+//    @Test
+//    @Transactional
+//    public void shouldGetAllTheTripsRelatedToCar() throws Exception {
+//        List<Car> cars = this.service.findListOfCars(1);
+//       // assertEquals(1,trip.size());
+//    }
 }

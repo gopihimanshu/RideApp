@@ -26,6 +26,7 @@ public class Car {
     private Date created;
     private Date modified;
     private Driver driver;
+//    private List<Trip> trips;
 
     @Id
     @GeneratedValue
@@ -65,5 +66,12 @@ public class Car {
     @JoinColumn(name="driver_id")
     public Driver getDriver() {return driver;}
     public void setDriver(Driver driver) {this.driver = driver;}
+
+//    @ManyToMany
+//    @JoinTable(name = "trips",
+//            joinColumns = @JoinColumn(name = "car_id", referencedColumnName = "id"))
+//    @JsonIgnore
+//    public List<Trip> getTrips() {return trips;}
+//    public void setTrips(List<Trip> trips) {this.trips = trips;}
 
 }
